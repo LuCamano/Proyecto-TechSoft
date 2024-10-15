@@ -3,8 +3,151 @@
 {% block title %}Inicio{% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1>Inicio</h1>
-        <p>Bienvenido a TechSoft</p>
+    <div class="container-fluid mt-2">
+        <h2>Últimos agregados</h2>
+        <div class="d-flex gap-2 overflow-x-auto">
+            {% comment %} Aqui van los productos {% endcomment %}
+            <div class="col-12 col-md-4 col-lg-3 mb-3">
+                <a class="card text-decoration-none" href="{% url "producto" %}">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-1 text-muted">Marca</h6>
+                        <h4 class="card-title">Nombre del producto</h4>
+                        <h5 class="card-subtitle mb-2 text-muted ">Categoría</h5>
+                        <p class="card-text">
+                            Característica 1<br>
+                            Característica 2<br>
+                            Característica 3<br>
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between">
+                            <p class="card-text">Precio:</p>
+                            <p class="card-text">$1.000</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 mb-3">
+                <a class="card text-decoration-none" href="{% url "producto" %}">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-1 text-muted">Marca</h6>
+                        <h4 class="card-title">Nombre del producto</h4>
+                        <h5 class="card-subtitle mb-2 text-muted ">Categoría</h5>
+                        <p class="card-text">
+                            Característica 1<br>
+                            Característica 2<br>
+                            Característica 3<br>
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between">
+                            <p class="card-text">Precio:</p>
+                            <p class="card-text">$1.000</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 mb-3">
+                <a class="card text-decoration-none" href="{% url "producto" %}">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-1 text-muted">Marca</h6>
+                        <h4 class="card-title">Nombre del producto</h4>
+                        <h5 class="card-subtitle mb-2 text-muted ">Categoría</h5>
+                        <p class="card-text">
+                            Característica 1<br>
+                            Característica 2<br>
+                            Característica 3<br>
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between">
+                            <p class="card-text">Precio:</p>
+                            <p class="card-text">$1.000</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 mb-3">
+                <a class="card text-decoration-none" href="{% url "producto" %}">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-1 text-muted">Marca</h6>
+                        <h4 class="card-title">Nombre del producto</h4>
+                        <h5 class="card-subtitle mb-2 text-muted ">Categoría</h5>
+                        <p class="card-text">
+                            Característica 1<br>
+                            Característica 2<br>
+                            Característica 3<br>
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between">
+                            <p class="card-text">Precio:</p>
+                            <p class="card-text">$1.000</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 mb-3">
+                <a class="card text-decoration-none" href="{% url "producto" %}">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-1 text-muted">Marca</h6>
+                        <h4 class="card-title">Nombre del producto</h4>
+                        <h5 class="card-subtitle mb-2 text-muted ">Categoría</h5>
+                        <p class="card-text">
+                            Característica 1<br>
+                            Característica 2<br>
+                            Característica 3<br>
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between">
+                            <p class="card-text">Precio:</p>
+                            <p class="card-text">$1.000</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 mb-3">
+                <a class="card text-decoration-none" href="{% url "producto" %}">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-1 text-muted">Marca</h6>
+                        <h4 class="card-title">Nombre del producto</h4>
+                        <h5 class="card-subtitle mb-2 text-muted ">Categoría</h5>
+                        <p class="card-text">
+                            Característica 1<br>
+                            Característica 2<br>
+                            Característica 3<br>
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between">
+                            <p class="card-text">Precio:</p>
+                            <p class="card-text">$1.000</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 mb-3">
+                <a class="card text-decoration-none" href="{% url "producto" %}">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-1 text-muted">Marca</h6>
+                        <h4 class="card-title">Nombre del producto</h4>
+                        <h5 class="card-subtitle mb-2 text-muted ">Categoría</h5>
+                        <p class="card-text">
+                            Característica 1<br>
+                            Característica 2<br>
+                            Característica 3<br>
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between">
+                            <p class="card-text">Precio:</p>
+                            <p class="card-text">$1.000</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% comment %} Aqui terminan los productos {% endcomment %}
+        </div>
     </div>
 {% endblock %}

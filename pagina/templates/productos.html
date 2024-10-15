@@ -1,0 +1,130 @@
+{% extends "base/base.html" %}
+
+{% block title %}Todos los productos{% endblock %}
+
+{% block content %}
+    <div class="container-fluid py-2">
+        <h2 class="text-center">Todos los productos</h2>
+        <div class="row">
+            <div class="col-12 col-lg-3">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h5 class="card-title">Filtrar por</h5>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="marca" class="form-label">Marca</label>
+                                <select class="form-select" id="marca">
+                                    <option selected>Seleccione una marca</option>
+                                    <option value="1">Marca 1</option>
+                                    <option value="2">Marca 2</option>
+                                    <option value="3">Marca 3</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="categoria" class="form-label">Categoría</label>
+                                <select class="form-select" id="categoria">
+                                    <option selected>Seleccione una categoría</option>
+                                    <option value="1">Categoría 1</option>
+                                    <option value="2">Categoría 2</option>
+                                    <option value="3">Categoría 3</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="precio" class="form-label">Precio</label>
+                                <input type="range" class="form-range" id="precio" min="0" max="1000" step="100">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-9">
+                <div class="row">
+                    {% comment %} Aqui van los productos {% endcomment %}
+                    <div class="col-12 col-md-6 col-lg-4 mb-3">
+                        <a class="card text-decoration-none" href="{% url "producto" %}">
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-1 text-muted">Marca</h6>
+                                <h4 class="card-title">Nombre del producto</h4>
+                                <h5 class="card-subtitle mb-2 text-muted ">Categoría</h5>
+                                <p class="card-text">
+                                    Característica 1<br>
+                                    Característica 2<br>
+                                    Característica 3<br>
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="d-flex justify-content-between">
+                                    <p class="card-text">Precio:</p>
+                                    <p class="card-text">$1.000</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4 mb-3">
+                        <a class="card text-decoration-none" href="{% url "producto" %}">
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-1 text-muted">Marca</h6>
+                                <h4 class="card-title">Nombre del producto</h4>
+                                <h5 class="card-subtitle mb-2 text-muted ">Categoría</h5>
+                                <p class="card-text">
+                                    Característica 1<br>
+                                    Característica 2<br>
+                                    Característica 3<br>
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="d-flex justify-content-between">
+                                    <p class="card-text">Precio:</p>
+                                    <p class="card-text">$1.000</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4 mb-3">
+                        <a class="card text-decoration-none" href="{% url "producto" %}">
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-1 text-muted">Marca</h6>
+                                <h4 class="card-title">Nombre del producto</h4>
+                                <h5 class="card-subtitle mb-2 text-muted ">Categoría</h5>
+                                <p class="card-text">
+                                    Característica 1<br>
+                                    Característica 2<br>
+                                    Característica 3<br>
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="d-flex justify-content-between">
+                                    <p class="card-text">Precio:</p>
+                                    <p class="card-text">$1.000</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4 mb-3">
+                        <a class="card text-decoration-none" href="{% url "producto" %}">
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-1 text-muted">Marca</h6>
+                                <h4 class="card-title">Nombre del producto</h4>
+                                <h5 class="card-subtitle mb-2 text-muted ">Categoría</h5>
+                                <p class="card-text">
+                                    Característica 1<br>
+                                    Característica 2<br>
+                                    Característica 3<br>
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="d-flex justify-content-between">
+                                    <p class="card-text">Precio:</p>
+                                    <p class="card-text">$1.000</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% comment %} Aqui terminan los productos {% endcomment %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
