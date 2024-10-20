@@ -1,1 +1,32 @@
 {% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}Producto{% endblock %}
+
+{% block content %}
+    <div class="container-fluid py-2">
+        <div class="row">
+            <div class="col-12 col-md-3">
+                <div class="card mb-1">
+                    <img src="{% static "img/celular.jpg" %}" class="card-img object-fit-cover" alt="Producto" width="300" height="300">
+                </div>
+            </div>
+            <div class="col-12 col-md-9">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-subtitle text-muted">Categoría</h4>
+                        <h2 class="card-title">Nombre del producto</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Marca: marca<br>
+                            Característica 1<br>
+                            Característica 2<br>
+                            Característica 3<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
