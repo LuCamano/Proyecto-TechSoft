@@ -1,0 +1,43 @@
+{% extends "base/base.html" %}
+
+{% block title %}Administración{% endblock %}
+
+{% block content %}
+    <div class="container-fluid my-2">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <h3 class="card-title">Panel de administración - <span class="dropdown">
+                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#">Características</a>
+                        <ul class="dropdown-menu bg-dark">
+                            <li><a class="dropdown-item" href="{% url "admin-categorias" %}">Categorías</a></li>
+                            <li><a class="dropdown-item" href="{% url "admin-marcas" %}">Marcas</a></li>
+                            <li><a class="dropdown-item" href="{% url "admin-productos" %}">Productos</a></li>
+                        </ul>
+                    </span></h3>
+                    <a href="#" class="btn btn-outline-success">Nueva característica</a>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-secondary">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Nombre</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                                {% for caracteristica in caracteristicas %}
+                                    <tr>
+                                        <td scope="row">{{caracteristica.id}}</td>
+                                        <td scope="row">{{caracteristica.nomb_caracteristica}}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

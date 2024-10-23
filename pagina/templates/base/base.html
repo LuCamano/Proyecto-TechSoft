@@ -37,7 +37,9 @@
                                 <li><a href="{% url "productos" %}" class="dropdown-item">Todos los productos</a></li>
                             </ul>
                         </li>
-                        <li><a class="nav-link" href="{% url "administracion" %}"><span class="d-lg-none"><i class="bi bi-server"></i> </span>Administración</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a class="nav-link" href="{% url "administracion" %}"><span class="d-lg-none"><i class="bi bi-server"></i> </span>Administración</a></li>
+                        {% endif %}
                     </ul>
                     <form class="my-2 my-lg-0">
                         <div class="input-group">

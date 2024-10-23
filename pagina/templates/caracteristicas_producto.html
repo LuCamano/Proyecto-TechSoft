@@ -1,0 +1,42 @@
+{% extends "base/base.html" %}
+
+{% block title %}Características del producto{% endblock %}
+
+{% block content %}
+    <div class="container-fluid my-2">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <a class="btn btn-outline-danger" href="{{urlAnterior}}"><i class="bi bi-chevron-left"></i> Volver</a>
+                    <h3 class="card-title">Características de {{producto}}</h3>
+                    {% comment %} <a href="{% url 'agregar-caracteristica-producto' %}" class="btn btn-outline-success">Nueva característica</a> {% endcomment %}
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-secondary">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Característica</th>
+                                    <th scope="col">Valor</th>
+                                    <th scope="col">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                                {% for caract in caracteristicas %}
+                                    <tr>
+                                        <td scope="row">{{ caract.caracteristica }}</td>
+                                        <td>{{ caract.descripcion_caract }}</td>
+                                        {% comment %} <td>
+                                            <a href="{% url 'editar-caracteristica-producto' caracteristica.id %}" class="btn btn-warning">Editar</a>
+                                            <a href="{% url 'eliminar-caracteristica-producto' caracteristica.id %}" class="btn btn-danger">Eliminar</a>
+                                        </td> {% endcomment %}
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
