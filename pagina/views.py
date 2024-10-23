@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import CreateView
+from django.contrib.auth.views import LoginView
 from .forms import ProductoForm, LoginForm
 from .models import Producto, Marca, Categoria, Caracteristica
 from django.contrib.auth.decorators import login_required
@@ -14,16 +15,9 @@ def index(request):
     context = {'productos': lista_productos}
     return render(request, "index.html", context)
 
-def loginV(request: HttpRequest):
-    if request.method == 'POST':
-        form = LoginForm(request, request.POST)
-        if form.is_valid():
-            login(request, form.get_user())
-            return redirect('index')
-        else:
-            messages.warning(request, 'Usuario o contraseña incorrectos')
-    form = LoginForm()
-    return render(request, "login.html", { 'form': form })
+class LoginV(LoginView):
+    template_name = 'login.html'
+    form_class = LoginForm
 
 @login_required
 def logoutV(request):
