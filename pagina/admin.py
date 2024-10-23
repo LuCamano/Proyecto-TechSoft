@@ -22,3 +22,4 @@ class ProductoAdmin(admin.ModelAdmin):
 @admin.register(ProductoCaracteristica)
 class ProductoCaracteristicaAdmin(admin.ModelAdmin):
     list_display = ['producto', 'caracteristica', 'descripcion_caract']
+    list_filter = ['producto', 'caracteristica']

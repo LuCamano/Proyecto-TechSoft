@@ -11,18 +11,22 @@ class Producto(models.Model):
     
     def __str__(self):
         return self.nombre
+    
+    @property
+    def caracteristicas(self):
+        return ProductoCaracteristica.objects.filter(producto=self)
 class Categoria(models.Model):
-    nomb_categoria = models.CharField("Categoría", max_length=45)
+    nomb_categoria = models.CharField("Categoría", max_length=45, unique=True)
     
     def __str__(self):
         return self.nomb_categoria
 class Marca(models.Model):
-    nomb_marca = models.CharField("Marca", max_length=45)
+    nomb_marca = models.CharField("Marca", max_length=45, unique=True)
     
     def __str__(self):
         return self.nomb_marca
 class Caracteristica(models.Model):
-    nomb_caracteristica = models.CharField("Característica", max_length=45)
+    nomb_caracteristica = models.CharField("Característica", max_length=45, unique=True)
     
     def __str__(self):
         return self.nomb_caracteristica
