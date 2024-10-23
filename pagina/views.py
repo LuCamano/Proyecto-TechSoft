@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import CreateView
-from .forms import ProductoForm
+from .forms import ProductoForm, LoginForm
 from .models import Producto, Marca, Categoria, Caracteristica
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.http import HttpRequest
+from django.contrib import messages
 # Create your views here.
 
 def index(request):
@@ -13,9 +14,18 @@ def index(request):
     context = {'productos': lista_productos}
     return render(request, "index.html", context)
 
-def loginV(request):
-    return render(request, "login.html")
+def loginV(request: HttpRequest):
+    if request.method == 'POST':
+        form = LoginForm(request, request.POST)
+        if form.is_valid():
+            login(request, form.get_user())
+            return redirect('index')
+        else:
+            messages.warning(request, 'Usuario o contraseña incorrectos')
+    form = LoginForm()
+    return render(request, "login.html", { 'form': form })
 
+@login_required
 def logoutV(request):
     logout(request)
     return redirect('/')
@@ -66,7 +76,7 @@ def caractProducto(request, id):
     }
     return render(request, "caracteristicas_producto.html", context)
 
-class AgregarProducto(CreateView, LoginRequiredMixin):
+class AgregarProducto(LoginRequiredMixin, CreateView):
     template_name = "formulario.html"
     form_class = ProductoForm
     success_url = '/administracion/'

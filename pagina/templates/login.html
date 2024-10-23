@@ -1,26 +1,31 @@
 {% extends "base/base.html" %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}Iniciar sesión{% endblock %}
 
 {% block content %}
     <div class="container">
         <div class="col-12 col-md-6 col-lg-4 position-absolute top-50 start-50 translate-middle">
+            {% for message in messages %}
+                <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                    <strong>
+                        {% if message.tags == 'success' %}
+                        <i class="bi bi-info-circle-fill"></i>
+                        {% else %}
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                        {% endif %}
+                    </strong> {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Iniciar Sesión</h3>
                 </div>
-                <form method="post" class="card-body">
-                    {% csrf_token %}
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Ingrese su nombre de usuario">
-                        <label for="username">Nombre de usuario</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña">
-                        <label for="password">Contraseña</label>
-                    </div>
-                    <button class="btn btn-success" type="submit">Iniciar sesión</button>
-                </form>
+                <div class="card-body">
+                    {% crispy form %}
+                </div>
             </div>
         </div>
     </div>
