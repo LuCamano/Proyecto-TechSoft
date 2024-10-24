@@ -1,5 +1,5 @@
 from django import forms
-from .models import Producto
+from .models import Producto, ProductoCaracteristica
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Column, Row, Field, Div
 from crispy_bootstrap5.bootstrap5 import FloatingField, Switch, Accordion
@@ -30,4 +30,18 @@ class LoginForm(AuthenticationForm):
             FloatingField('username'),
             FloatingField('password'),
             Submit('submit', 'Iniciar Sesión', css_class="btn-success")
+        )
+
+class ProductoCaracteristicaForm(forms.ModelForm):
+    class Meta:
+        model = ProductoCaracteristica
+        fields = ['producto', 'caracteristica', 'descripcion_caract']
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.disable_csrf = True
+        self.helper.layout = Layout(
+            FloatingField("caracteristica"),
+            FloatingField("descripcion_caract")
         )
