@@ -5,11 +5,23 @@
 {% block content %}
     <div class="container-fluid my-2">
         <div class="col-12">
+            {% for message in messages %}
+                <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                    <strong>
+                        {% if message.tags == 'success' %}
+                        <i class="bi bi-info-circle-fill"></i>
+                        {% else %}
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                        {% endif %}
+                    </strong> {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <a class="btn btn-outline-danger" href="{{urlAnterior}}"><i class="bi bi-chevron-left"></i> Volver</a>
                     <h3 class="card-title">Características de {{producto}}</h3>
-                    {% comment %} <a href="{% url 'agregar-caracteristica-producto' %}" class="btn btn-outline-success">Nueva característica</a> {% endcomment %}
+                    <a href="{% url 'asignar-caracteristica' idP %}" class="btn btn-outline-success">Nueva característica</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -26,10 +38,10 @@
                                     <tr>
                                         <td scope="row">{{ caract.caracteristica }}</td>
                                         <td>{{ caract.descripcion_caract }}</td>
-                                        {% comment %} <td>
-                                            <a href="{% url 'editar-caracteristica-producto' caracteristica.id %}" class="btn btn-warning">Editar</a>
-                                            <a href="{% url 'eliminar-caracteristica-producto' caracteristica.id %}" class="btn btn-danger">Eliminar</a>
-                                        </td> {% endcomment %}
+                                        <td>
+                                            <a href="{% url 'editar-caract-producto' caract.producto.id caract.id %}">Editar</a> |
+                                            <a href="#" onclick="eliminar('{% url 'eliminar-caract-producto' caract.producto.id caract.id %}')">Eliminar</a>
+                                        </td>
                                     </tr>
                                 {% endfor %}
                             </tbody>

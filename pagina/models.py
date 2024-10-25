@@ -35,5 +35,8 @@ class ProductoCaracteristica(models.Model):
     caracteristica = models.ForeignKey('Caracteristica', verbose_name="Característica", on_delete=models.PROTECT)
     descripcion_caract = models.CharField("Descripción", max_length=45)
     
+    class Meta:
+        unique_together = ['producto', 'caracteristica']
+    
     def __str__(self):
         return self.producto.nombre + ' - ' + self.caracteristica.nomb_caracteristica

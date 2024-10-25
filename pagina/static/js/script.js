@@ -12,3 +12,9 @@
         }, false)
     })
 })();
+
+function eliminar(url) {
+    if (confirm('¿Seguro?')) {
+        window.location.href = url;
+    }
+}
