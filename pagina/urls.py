@@ -21,4 +21,7 @@ urlpatterns = [
     path('administracion/agregar-producto/', views.AgregarProducto.as_view(), name="agregar-producto"),
     path('administracion/editar-producto/<pk>', views.editarProducto, name="editar-producto"),
     path('administracion/eliminar-producto/<pk>', views.eliminarProducto, name="eliminar-producto"),
+    path('administracion/agregar-caracteristica/', views.AgregarCaracteristica.as_view(), name="agregar-caracteristica"),
+    path('administracion/editar-caracteristica/<pk>', views.EditarCaracteristica.as_view(), name="editar-caracteristica"),
+    path('administracion/eliminar-caracteristica/<id>', views.eliminarCaracteristica, name="eliminar-caracteristica"),
 ]

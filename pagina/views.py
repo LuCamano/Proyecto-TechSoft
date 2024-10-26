@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 from django.contrib.auth.views import LoginView
-from .forms import ProductoForm, LoginForm, ProductoCaracteristicaForm
+from .forms import ProductoForm, LoginForm, ProductoCaracteristicaForm, CaracteristicaForm
 from .models import Producto, Marca, Categoria, Caracteristica, ProductoCaracteristica
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -166,3 +166,43 @@ def eliminarCaracteristicaProducto(request, idP, idCP):
         messages.warning(request, f'Error: {e}')
     return redirect(f'/administracion/productos/{idP}/caracteristicas/')
     
+class AgregarCaracteristica(LoginRequiredMixin, CreateView):
+    template_name = "formulario.html"
+    form_class = CaracteristicaForm
+    success_url = '/administracion/caracteristicas'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Agregar Característica'
+        context['urlAnterior'] = '/administracion/caracteristicas'
+        return context
+    
+    def form_valid(self, form):
+        messages.success(self.request, 'Característica agregada correctamente')
+        return super().form_valid(form)
+    
+class EditarCaracteristica(LoginRequiredMixin,UpdateView):
+    model = Caracteristica
+    form_class = CaracteristicaForm
+    template_name = "formulario.html"
+    success_url = '/administracion/caracteristicas'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Editar Característica'
+        context['urlAnterior'] = '/administracion/caracteristicas'
+        return context
+    
+    def form_valid(self, form):
+        messages.success(self.request, 'Característica editada correctamente')
+        return super().form_valid(form)
+    
+@login_required
+def eliminarCaracteristica(request, id):
+    caract = Caracteristica.objects.get(id=id)
+    try:
+        caract.delete()
+        messages.success(request, 'Característica eliminada correctamente')
+    except Exception as e:
+        messages.warning(request, 'Error: La característica no se puede eliminar (es posible que tenga otros elementos asociados)')
+    return redirect('/administracion/caracteristicas')
