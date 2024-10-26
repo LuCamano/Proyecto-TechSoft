@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import logout
 from django.views.generic import CreateView, UpdateView
 from django.contrib.auth.views import LoginView
-from .forms import ProductoForm, LoginForm, ProductoCaracteristicaForm, CaracteristicaForm
+from .forms import ProductoForm, LoginForm, ProductoCaracteristicaForm, CaracteristicaForm, MarcaForm, CategoriaForm
 from .models import Producto, Marca, Categoria, Caracteristica, ProductoCaracteristica
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -46,19 +46,19 @@ def adminProductos(request):
 
 @login_required
 def adminCaracteristicas(request):
-    caracts = Caracteristica.objects.all()
+    caracts = Caracteristica.objects.all().order_by('-id')
     context = { 'caracteristicas': caracts }
     return render(request, "administracion_caracteristicas.html", context)
 
 @login_required
 def adminMarcas(request):
-    marcas = Marca.objects.all()
+    marcas = Marca.objects.all().order_by('-id')
     context = { 'marcas': marcas }
     return render(request, "administracion_marcas.html", context)
 
 @login_required
 def adminCategorias(request):
-    categs = Categoria.objects.all()
+    categs = Categoria.objects.all().order_by('-id')
     context = { 'categorias': categs }
     return render(request, "administracion_categorias.html", context)
 
@@ -206,3 +206,85 @@ def eliminarCaracteristica(request, id):
     except Exception as e:
         messages.warning(request, 'Error: La característica no se puede eliminar (es posible que tenga otros elementos asociados)')
     return redirect('/administracion/caracteristicas')
+
+class AgregarMarca(LoginRequiredMixin, CreateView):
+    template_name = "formulario.html"
+    form_class = MarcaForm
+    success_url = '/administracion/marcas'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Agregar Marca'
+        context['urlAnterior'] = '/administracion/marcas'
+        return context
+    
+    def form_valid(self, form):
+        messages.success(self.request, 'Marca agregada correctamente')
+        return super().form_valid(form)
+
+class EditarMarca(LoginRequiredMixin, UpdateView):
+    model = Marca
+    form_class = MarcaForm
+    template_name = "formulario.html"
+    success_url = '/administracion/marcas'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Editar Marca'
+        context['urlAnterior'] = '/administracion/marcas'
+        return context
+    
+    def form_valid(self, form):
+        messages.success(self.request, 'Marca editada correctamente')
+        return super().form_valid(form)
+    
+@login_required
+def eliminarMarca(request, id):
+    marca = Marca.objects.get(id=id)
+    try:
+        marca.delete()
+        messages.success(request, 'Marca eliminada correctamente')
+    except Exception as e:
+        messages.warning(request, 'Error: La marca no se puede eliminar (es posible que tenga otros elementos asociados)')
+    return redirect('/administracion/marcas')
+
+class AgregarCategoria(LoginRequiredMixin, CreateView):
+    template_name = "formulario.html"
+    form_class = CategoriaForm
+    success_url = '/administracion/categorias'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Agregar Categoría'
+        context['urlAnterior'] = '/administracion/categorias'
+        return context
+    
+    def form_valid(self, form):
+        messages.success(self.request, 'Categoría agregada correctamente')
+        return super().form_valid(form)
+
+class EditarCategoria(LoginRequiredMixin, UpdateView):
+    model = Categoria
+    form_class = CategoriaForm
+    template_name = "formulario.html"
+    success_url = '/administracion/categorias'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Editar Categoría'
+        context['urlAnterior'] = '/administracion/categorias'
+        return context
+    
+    def form_valid(self, form):
+        messages.success(self.request, 'Categoría editada correctamente')
+        return super().form_valid(form)
+    
+@login_required
+def eliminarCategoria(request, id):
+    categoria = Categoria.objects.get(id=id)
+    try:
+        categoria.delete()
+        messages.success(request, 'Categoría eliminada correctamente')
+    except Exception as e:
+        messages.warning(request, 'Error: La categoría no se puede eliminar (es posible que tenga otros elementos asociados)')
+    return redirect('/administracion/categorias')

@@ -24,4 +24,10 @@ urlpatterns = [
     path('administracion/agregar-caracteristica/', views.AgregarCaracteristica.as_view(), name="agregar-caracteristica"),
     path('administracion/editar-caracteristica/<pk>', views.EditarCaracteristica.as_view(), name="editar-caracteristica"),
     path('administracion/eliminar-caracteristica/<id>', views.eliminarCaracteristica, name="eliminar-caracteristica"),
+    path('administracion/agregar-marca/', views.AgregarMarca.as_view(), name="agregar-marca"),
+    path('administracion/editar-marca/<pk>', views.EditarMarca.as_view(), name="editar-marca"),
+    path('administracion/eliminar-marca/<id>', views.eliminarMarca, name="eliminar-marca"),
+    path('administracion/agregar-categoria/', views.AgregarCategoria.as_view(), name="agregar-categoria"),
+    path('administracion/editar-categoria/<pk>', views.EditarCategoria.as_view(), name="editar-categoria"),
+    path('administracion/eliminar-categoria/<id>', views.eliminarCategoria, name="eliminar-categoria"),
 ]
