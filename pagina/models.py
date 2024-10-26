@@ -26,11 +26,17 @@ class Marca(models.Model):
     def __str__(self):
         return self.nomb_marca
 class Caracteristica(models.Model):
+    """
+    Modelo para almacenar los nombres de las características disponibles para los productos
+    """
     nomb_caracteristica = models.CharField("Característica", max_length=45, unique=True)
     
     def __str__(self):
         return self.nomb_caracteristica
 class ProductoCaracteristica(models.Model):
+    """
+    Modelo para almacenar los detalles de cada característica de un producto
+    """
     producto = models.ForeignKey('Producto', verbose_name="Producto", on_delete=models.PROTECT)
     caracteristica = models.ForeignKey('Caracteristica', verbose_name="Característica", on_delete=models.PROTECT)
     descripcion_caract = models.CharField("Descripción", max_length=45)
