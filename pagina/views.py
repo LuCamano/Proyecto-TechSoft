@@ -25,16 +25,31 @@ def logoutV(request):
     return redirect('/')
 
 def marcas(request):
-    return render(request, "marcas.html")
+    marcs = Marca.objects.all()
+    context = {
+        'marcas': marcs
+    }
+    return render(request, "marcas.html", context)
 
 def categorias(request):
-    return render(request, "categorias.html")
+    categs = Categoria.objects.all()
+    context = {
+        'categorias': categs
+    }
+    return render(request, "categorias.html", context)
 
-def producto(request):
-    return render(request, "producto.html")
+def producto(request, id):
+    context = {
+        'producto': Producto.objects.get(id=id)
+    }
+    return render(request, "producto.html", context)
 
 def productos(request):
-    return render(request, "productos.html")
+    products = Producto.objects.all()
+    context = {
+        'productos': products
+    }
+    return render(request, "productos.html", context)
 
 @login_required
 def adminProductos(request):

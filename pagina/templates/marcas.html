@@ -5,48 +5,15 @@
 {% block content %}
     <div class="container-fluid pt-2">
         <div class="row justify-content-start align-items-start g-2">
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Marca</h4>
-                    </div>
+            {% for marca in marcas %}
+                <div class="col">
+                    <a href="{% url "productos" %}" class="card text-decoration-none">
+                        <div class="card-body">
+                            <h4 class="card-title">{{marca}}</h4>
+                        </div>
+                    </a>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Marca</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Marca</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Marca</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Marca</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Marca</h4>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
