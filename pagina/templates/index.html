@@ -11,7 +11,7 @@
             {% comment %} Aqui van los productos {% endcomment %}
             {% for producto in productos %}
                 <div class="col-12 col-md-4 col-lg-3 mb-3">
-                    <a class="card text-decoration-none" href="{% url 'producto' %}" style="height: 315px;">
+                    <a class="card text-decoration-none" href="{% url 'producto' producto.id %}" style="height: 315px;">
                         <div class="card-body">
                             <h6 class="card-subtitle mb-1 text-muted">{{producto.marca}}</h6>
                             <h4 class="card-title">{{producto.nombre}}</h4>

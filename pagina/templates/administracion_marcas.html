@@ -5,6 +5,18 @@
 {% block content %}
     <div class="container-fluid my-2">
         <div class="col-12">
+            {% for message in messages %}
+                <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                    <strong>
+                        {% if message.tags == 'success' %}
+                        <i class="bi bi-info-circle-fill"></i>
+                        {% else %}
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                        {% endif %}
+                    </strong> {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <h3 class="card-title">Panel de administración - <span class="dropdown">
@@ -15,7 +27,7 @@
                             <li><a class="dropdown-item" href="{% url "admin-caracteristicas" %}">Características</a></li>
                         </ul>
                     </span></h3>
-                    <a href="#" class="btn btn-outline-success">Nueva marca</a>
+                    <a href="{% url "agregar-marca" %}" class="btn btn-outline-success">Nueva marca</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -24,6 +36,7 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Nombre</th>
+                                    <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody class="table-group-divider">
@@ -31,6 +44,10 @@
                                     <tr>
                                         <td scope="row">{{marca.id}}</td>
                                         <td scope="row">{{marca.nomb_marca}}</td>
+                                        <td scope="row">
+                                            <a href="{% url 'editar-marca' marca.id %}">Editar</a> |
+                                            <a href="#" onclick="eliminar('{% url 'eliminar-marca' marca.id %}')">Eliminar</a>
+                                        </td>
                                     </tr>
                                 {% endfor %}
                             </tbody>

@@ -1,5 +1,6 @@
 {% extends "base/base.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block title %}Producto{% endblock %}
 
@@ -14,15 +15,16 @@
             <div class="col-12 col-md-9">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-subtitle text-muted">Categoría</h4>
-                        <h2 class="card-title">Nombre del producto</h2>
+                        <h4 class="card-subtitle text-muted">{{producto.categoria}}</h4>
+                        <h2 class="card-title">{{producto.nombre}}</h2>
                     </div>
                     <div class="card-body">
+                        <p>Stock: {{producto.stock}}</p>
                         <p class="card-text">
-                            Marca: marca<br>
-                            Característica 1<br>
-                            Característica 2<br>
-                            Característica 3<br>
+                            Marca: {{producto.marca}}<br>
+                            {% for caract in producto.caracteristicas %}
+                                {{caract.caracteristica}}: {{caract.descripcion_caract}}<br>
+                            {% endfor %}
                         </p>
                     </div>
                 </div>

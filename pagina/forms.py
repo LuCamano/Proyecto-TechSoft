@@ -65,3 +65,29 @@ class CaracteristicaForm(forms.ModelForm):
         self.helper.form_class = 'needs-validation'
         self.helper.attrs = {'novalidate': ''}
         self.helper.add_input(Submit('submit', 'Guardar', css_class='btn-success'))
+
+class MarcaForm(forms.ModelForm):
+    class Meta:
+        model = Marca
+        fields = ['nomb_marca']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'POST'
+        self.helper.form_class = 'needs-validation'
+        self.helper.attrs = {'novalidate': ''}
+        self.helper.add_input(Submit('submit', 'Guardar', css_class='btn-success'))
+        
+class CategoriaForm(forms.ModelForm):
+    class Meta:
+        model = Categoria
+        fields = ['nomb_categoria']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'POST'
+        self.helper.form_class = 'needs-validation'
+        self.helper.attrs = {'novalidate': ''}
+        self.helper.add_input(Submit('submit', 'Guardar', css_class='btn-success'))
