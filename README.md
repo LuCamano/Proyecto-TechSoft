@@ -16,7 +16,7 @@ El objetivo de este proyecto es aplicar los conceptos y técnicas aprendidas en 
 
 1. Clona el repositorio:
     ```bash
-    git clone https://github.com/tu-usuario/proyecto-techsoft.git
+    git clone https://github.com/LuCamano/proyecto-techsoft
     ```
 2. Navega al directorio del proyecto:
     ```bash
@@ -24,7 +24,7 @@ El objetivo de este proyecto es aplicar los conceptos y técnicas aprendidas en 
     ```
 3. Crea un entorno virtual:
     ```bash
-    python -m venv env
+    python -m venv venv
     ```
 4. Activa el entorno virtual:
     - En Windows:
