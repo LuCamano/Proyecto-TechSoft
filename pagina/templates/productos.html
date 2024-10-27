@@ -1,5 +1,6 @@
 {% extends "base/base.html" %}
 
+{% load crispy_forms_tags %}
 {% load humanize %}
 
 {% block title %}Todos los productos{% endblock %}
@@ -14,29 +15,9 @@
                         <h5 class="card-title">Filtrar por</h5>
                     </div>
                     <div class="card-body">
-                        <form>
-                            <div class="mb-3">
-                                <label for="marca" class="form-label">Marca</label>
-                                <select class="form-select" id="marca">
-                                    <option selected>Seleccione una marca</option>
-                                    <option value="1">Marca 1</option>
-                                    <option value="2">Marca 2</option>
-                                    <option value="3">Marca 3</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="categoria" class="form-label">Categoría</label>
-                                <select class="form-select" id="categoria">
-                                    <option selected>Seleccione una categoría</option>
-                                    <option value="1">Categoría 1</option>
-                                    <option value="2">Categoría 2</option>
-                                    <option value="3">Categoría 3</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="precio" class="form-label">Precio</label>
-                                <input type="range" class="form-range" id="precio" min="0" max="1000" step="100">
-                            </div>
+                        <form method="get">
+                            {{ filterset.form|crispy }}
+                            <button type="submit" class="btn btn-primary">Filtrar</button>
                         </form>
                     </div>
                 </div>

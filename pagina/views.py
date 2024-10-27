@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, ListView
 from django.contrib.auth.views import LoginView
 from .forms import ProductoForm, LoginForm, ProductoCaracteristicaForm, CaracteristicaForm, MarcaForm, CategoriaForm
 from .models import Producto, Marca, Categoria, Caracteristica, ProductoCaracteristica
@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpRequest
 from django.contrib import messages
+from .filters import ProductoFilter
 # Create your views here.
 
 def index(request):
@@ -44,12 +45,21 @@ def producto(request, id):
     }
     return render(request, "producto.html", context)
 
-def productos(request):
-    products = Producto.objects.all()
-    context = {
-        'productos': products
-    }
-    return render(request, "productos.html", context)
+class Productos(ListView):
+    model = Producto
+    template_name = "productos.html"
+    context_object_name = 'productos'
+    paginate_by = 10
+    
+    def get_queryset(self):
+        queryset = Producto.objects.all()
+        self.filterset = ProductoFilter(self.request.GET, queryset=queryset)
+        return self.filterset.qs
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filterset'] = self.filterset
+        return context
 
 @login_required
 def adminProductos(request):
