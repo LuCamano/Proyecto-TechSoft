@@ -42,15 +42,11 @@ El objetivo de este proyecto es aplicar los conceptos y técnicas aprendidas en 
 
 ## Uso
 
-1. Ejecuta las migraciones de la base de datos:
-    ```bash
-    python manage.py migrate
-    ```
-2. Inicia el servidor de desarrollo:
+1. Inicia el servidor de desarrollo:
     ```bash
     python manage.py runserver
     ```
-3. Abre tu navegador y visita `http://127.0.0.1:8000` para ver la aplicación en funcionamiento.
+2. Abre tu navegador y visita `http://127.0.0.1:8000` para ver la aplicación en funcionamiento.
 
 ## Acceso general
 
